@@ -84,7 +84,7 @@ function load(){
 
     for(var i = 0; i < news.length; i++){
 
-        dfData = news[i].data - Today 
+        dfData = Today - news[i].data
         timeDate = ''
 
         if(news[i].data == Today){
