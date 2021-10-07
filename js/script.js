@@ -11,7 +11,7 @@ Modal = {
 var newsDiv = document.getElementById("news")
 
 var news = [{
-    imagem: "logo_size_invert.jpg",
+    imagem: "./img/logo_size_invert.jpg",
     titulo: "A mais nova plataforma do EoFut",
     subtitle: '"Mais tecnológico, mais moderno e mais conceitual."',
     data: 4,
@@ -122,7 +122,7 @@ function load(){
         textn +=`
             <div class="card-news" onclick="notice(${i})">
                 <div class="card-image">
-                    <img src="./img/${news[i].imagem}" alt="">
+                    <img src="${news[i].imagem}" alt="">
                 </div>
             <div class="card-data">
                 <div class="card-title">
