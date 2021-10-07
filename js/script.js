@@ -24,6 +24,28 @@ var news = [{
     jornada, sem você não seriamos nada	.
     
     Espero que gostem!`
+},
+{
+    imagem: "https://st2.depositphotos.com/1579454/12350/i/950/depositphotos_123503422-stock-photo-3d-illustration-of-chromosomes.jpg",
+    titulo: "O avanço da tecnologia dos clones no futebol",
+    subtitle: '"No passado, a tecnologia era aplicável em todas as áreas. Hoje, é inevitável"',
+    data: 7,
+    autor: "Tadeu Schulz",
+    notice: `O futebol existe a mais de um século, foi responsável por criar 
+    grandes estrelas, grandes histórias e fazer que nós, torcedores, sofram
+    com grandes emoções. Essa história, com toda certeza, vai continuar por
+    vários anos, mas hoje, essa história ganha mais um capítulo, clones. <br>
+     Depois de um investimento coletivo de grandes clubes ao redor do mundo,
+    Um grupo de cientistas conseguiram criar o primeiro grupos de jogadores clones
+    do mundo, grupo esse composto por Benzema, Cristiano Ronaldo, Douglas Costa, 
+    Toni Kroos e Pickford. Os clones foram treinados e conseguiram resultados semelhantes
+    aos jogadores reais. <br>
+    Esse investimento foi feito com a intenção de serem realizados mais jogos de futebol por ano,
+    onde será possíviel realizar uma Olimpíado sem atrapalhar os campeonatos nacionais e internacionais,
+    dando oportunidade do público assistirem mais jogos. Vale ressaltar que os clones somente serão usado
+    nesse esporte. <br>
+    Mas a pergunta que fica é, ver o seu time do coração, composto por um elenco
+    100% de por clones, jogar é tão emocionante quanto ver jogadores reais? `    
 }]
 
 var jornalist = [{
@@ -81,7 +103,8 @@ function load(){
         `
     }
     jl.innerHTML = textj
-
+    
+    news.reverse()
     for(var i = 0; i < news.length; i++){
 
         dfData = Today - news[i].data
