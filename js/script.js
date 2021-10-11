@@ -19,6 +19,7 @@ var news = [{
     notice: `Agora, o Jornal EoFut finalmente está de cara nova!
     Agora com um novo site, novo logo e várias outras novidades, o time
     EoFut esrá mais motivado nunca para trazer novidades para vocês!
+
       Apesar de ser apenas uma breve mensagem, agradecemos o apoio do nosso 
     incrível público e esperamos que todos estejam juntos para essa próxima 
     jornada, sem você não seriamos nada	.
@@ -46,7 +47,8 @@ var news = [{
     nesse esporte. <br>
     Mas a pergunta que fica é, ver o seu time do coração, composto por um elenco
     100% de por clones, jogar é tão emocionante quanto ver jogadores reais? `    
-}]
+}
+]
 
 var jornalist = [{
     foto: "",
@@ -61,7 +63,6 @@ var jornalist = [{
 ]
 
 var jl = document.querySelector(".line-jornalist")
-var ln = document.querySelector(".line-news")
 
 var date = new Date
 var Today = date.getDate()
@@ -93,36 +94,51 @@ function load(){
     for(var i = 0; i < jornalist.length; i++){
         
         textj += `
-         <div class="jornalist-perfil">
+        <div class="jornalist-perfil">
             <div class="jornalist-photo"></div>
             <div class="jornalist-data">
             <div class="jornalist-name"><a href="#">${jornalist[i].nome}</a></div>
             <div class="jornalist-function"><a href="#">${jornalist[i].cargo}</a></div>
             </div>
-            </div>  
+        </div>  
         `
     }
     jl.innerHTML = textj
-    
+
+    var numberLineNews = parseInt(news.length/3)
+        
+    for(var n = 0; n <= numberLineNews; n++){
+        newsDiv.innerHTML += '<div class="line-news"></div>'
+    }
+
     news.reverse()
     for(var i = 0; i < news.length; i++){
 
-        dfData = Today - news[i].data
-        timeDate = ''
-
+        dfData =  Today - news[i].data 
+        dfWeek = ''
+        timeDate = '' 
         if(news[i].data == Today){
             timeDate = 'Hoje'
         }
         else if(dfData < Today && dfData == 1){
             timeDate = "Ontem"
         }
-        else if(dfData < Today && 1 < dfData < 7){
+        else if(dfData < Today && 1 < dfData && dfData < 7){
             timeDate = `Há ${dfData} dias`
         }
-        textn +=`
+        else if(7 <=dfData < 30){
+            dfWeek = parseInt(dfData/7)
+            if(dfWeek == 1){
+                timeDate = `Há ${dfWeek} semana`
+            }else{
+                timeDate = `Há ${dfWeek} semanas`
+            }
+        }
+
+        textn =`
             <div class="card-news" onclick="notice(${i})">
                 <div class="card-image">
-                    <img src="${news[i].imagem}" alt="">
+                    <img src="${news[i].imagem}">
                 </div>
             <div class="card-data">
                 <div class="card-title">
@@ -134,6 +150,9 @@ function load(){
                 </div>
             </div>
         `
+
+    let nl = parseInt(i/3)
+    document.querySelectorAll(".line-news")[nl].innerHTML += textn
     }
-    ln.innerHTML += textn
+    
 }
