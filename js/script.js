@@ -60,7 +60,7 @@ var news = [{
     },
     autor: 'Julio Casablanca',
     notice: `Em entrevista, perguntei ao técnico Pedro Henrique: "Será que ele merece a camisa 9 do Coutinho, que era do Douglas Costas, que marcou a história do clube Real Madrid como camisa nove lendário?" <br>
-Sua resposta foi:"Não sabemos se alcançará o mesmo nível técnico, mas vamos construir mas uma mostro no meio campo e buscaremos o campeonato e o El clássico."`
+Sua resposta foi:" Não sabemos se vamos alcançará o mesmo nível técnico medindo com os resultados anteriores, mas tentarei construir uma base no time quase uma família, e recriar um monstro no meio campo central e assim buscaremos o campeonato e o El clássico."`
 }
 ]
 
@@ -77,10 +77,6 @@ var jornalist = [{
 ]
 
 var jl = document.querySelector(".line-jornalist")
-
-var date = new Date
-var Today = date.getDate()
-
 
 function notice(i){
     newsDiv.innerHTML = `
