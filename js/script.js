@@ -127,36 +127,6 @@ function load(){
         document.querySelectorAll(".line-jornalist")[jl].innerHTML += textj
     }
     
-    var date = new Date
-var Today = date.getDate()
-var Mouth = date.getMonth() + 1
-var Year = date.getFullYear()
-
-function noticeDate(newsDate){
-    dfData =  Today - newsDate 
-    dfWeek = ''
-    timeDate = '' 
-    if(newsDate == Today){
-        timeDate = 'Hoje'
-    }
-    else if(dfData < Today && dfData == 1){
-        timeDate = "Ontem"
-    }
-    else if(dfData < Today && 1 < dfData && dfData < 7){
-        timeDate = `Há ${dfData} dias`
-    }
-    else if(7 <=dfData < 30){
-        dfWeek = parseInt(dfData/7)
-        if(dfWeek == 1){
-            timeDate = `Há ${dfWeek} semana`
-        }else{
-            timeDate = `Há ${dfWeek} semanas`
-        }
-    }
-    return timeDate
-}
-   
-
     var numberLineNews = parseInt(news.length/3)
         
     for(var n = 0; n <= numberLineNews; n++){
@@ -187,5 +157,33 @@ function noticeDate(newsDate){
     let nl = parseInt(i/3)
     document.querySelectorAll(".line-news")[nl].innerHTML += textn
     }
-    
+}
+
+ var date = new Date
+var Today = date.getDate()
+var Mouth = date.getMonth() + 1
+var Year = date.getFullYear()
+
+function noticeDate(newsDate){
+    dfData =  Today - newsDate 
+    dfWeek = ''
+    timeDate = '' 
+    if(newsDate == Today){
+        timeDate = 'Hoje'
+    }
+    else if(dfData < Today && dfData == 1){
+        timeDate = "Ontem"
+    }
+    else if(dfData < Today && 1 < dfData && dfData < 7){
+        timeDate = `Há ${dfData} dias`
+    }
+    else if(7 <=dfData < 30){
+        dfWeek = parseInt(dfData/7)
+        if(dfWeek == 1){
+            timeDate = `Há ${dfWeek} semana`
+        }else{
+            timeDate = `Há ${dfWeek} semanas`
+        }
+    }
+    return timeDate
 }
