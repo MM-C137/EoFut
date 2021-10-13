@@ -9,6 +9,8 @@ Modal = {
 
 
 var newsDiv = document.getElementById("news")
+var jornalistDiv = document.getElementById("jornalist")
+var titleForNews = document.getElementById("title")
 
 var news = [{
     imagem: "./img/logo_size_invert.jpg",
