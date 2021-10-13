@@ -47,6 +47,18 @@ var news = [{
     nesse esporte. <br>
     Mas a pergunta que fica é, ver o seu time do coração, composto por um elenco
     100% de por clones, jogar é tão emocionante quanto ver jogadores reais? `    
+},{
+    imagem: "https://mercadodofutebol.com/wp-content/uploads/2021/06/60d952e479da2.jpg",
+    titulo: 'Kevin De Bruyne chega ao Real Madrid!',
+    subtitle: '"O homem chegou, a lenda" - Pedro Henrique, técnico do Real Madrid',
+    data: {
+        dia: 13,
+        mes: 10,
+        ano: 2021
+    },
+    autor: 'Julio Casablanca',
+    notice: `Em entrevista, perguntei ao técnico Pedro Henrique: "Será que ele merece a camisa 9 do Coutinho, que era do Douglas Costas, que marcou a história do clube Real Madrid como camisa nove lendário?" <br>
+Sua resposta foi:"Não sabemos se alcançará o mesmo nível técnico, mas vamos construir mas uma mostro no meio campo e buscaremos o campeonato e o El clássico."`
 }
 ]
 
@@ -91,9 +103,15 @@ function load(){
     var textj = ''
     var textn = ""
 
+    var numberJornalistLines = parseInt(jornalist.length/3)
+
+    for(var n = 0; n <= numberJornalistLines; n++){
+        jornalistDiv.innerHTML += '<div class="line-jornalist"></div>'
+    }
+
     for(var i = 0; i < jornalist.length; i++){
         
-        textj += `
+        textj = `
         <div class="jornalist-perfil">
             <div class="jornalist-photo"></div>
             <div class="jornalist-data">
@@ -102,8 +120,40 @@ function load(){
             </div>
         </div>  
         `
+
+        let jl = parseInt(i/3)
+        document.querySelectorAll(".line-jornalist")[jl].innerHTML += textj
     }
-    jl.innerHTML = textj
+    
+    var date = new Date
+var Today = date.getDate()
+var Mouth = date.getMonth() + 1
+var Year = date.getFullYear()
+
+function noticeDate(newsDate){
+    dfData =  Today - newsDate 
+    dfWeek = ''
+    timeDate = '' 
+    if(newsDate == Today){
+        timeDate = 'Hoje'
+    }
+    else if(dfData < Today && dfData == 1){
+        timeDate = "Ontem"
+    }
+    else if(dfData < Today && 1 < dfData && dfData < 7){
+        timeDate = `Há ${dfData} dias`
+    }
+    else if(7 <=dfData < 30){
+        dfWeek = parseInt(dfData/7)
+        if(dfWeek == 1){
+            timeDate = `Há ${dfWeek} semana`
+        }else{
+            timeDate = `Há ${dfWeek} semanas`
+        }
+    }
+    return timeDate
+}
+   
 
     var numberLineNews = parseInt(news.length/3)
         
@@ -114,29 +164,10 @@ function load(){
     news.reverse()
     for(var i = 0; i < news.length; i++){
 
-        dfData =  Today - news[i].data 
-        dfWeek = ''
-        timeDate = '' 
-        if(news[i].data == Today){
-            timeDate = 'Hoje'
-        }
-        else if(dfData < Today && dfData == 1){
-            timeDate = "Ontem"
-        }
-        else if(dfData < Today && 1 < dfData && dfData < 7){
-            timeDate = `Há ${dfData} dias`
-        }
-        else if(7 <=dfData < 30){
-            dfWeek = parseInt(dfData/7)
-            if(dfWeek == 1){
-                timeDate = `Há ${dfWeek} semana`
-            }else{
-                timeDate = `Há ${dfWeek} semanas`
-            }
-        }
+        let timeDate = noticeDate(news[i].data.dia)
 
         textn =`
-            <div class="card-news" onclick="notice(${i})">
+            <div class="card-news" onclick="notice(${i},news)">
                 <div class="card-image">
                     <img src="${news[i].imagem}">
                 </div>
