@@ -16,7 +16,11 @@ var news = [{
     imagem: "./img/logo_size_invert.jpg",
     titulo: "A mais nova plataforma do EoFut",
     subtitle: '"Mais tecnológico, mais moderno e mais conceitual."',
-    data: 4,
+    data: {
+        dia: 4,
+        mes: 10,
+        ano: 2021
+    },
     autor: "Júlio Casablanca",
     notice: `Agora, o Jornal EoFut finalmente está de cara nova!
     Agora com um novo site, novo logo e várias outras novidades, o time
@@ -26,43 +30,8 @@ var news = [{
     incrível público e esperamos que todos estejam juntos para essa próxima 
     jornada, sem você não seriamos nada	.
     
-    Espero que gostem!`
-},
-{
-    imagem: "https://st2.depositphotos.com/1579454/12350/i/950/depositphotos_123503422-stock-photo-3d-illustration-of-chromosomes.jpg",
-    titulo: "O avanço da tecnologia dos clones no futebol",
-    subtitle: '"No passado, a tecnologia era aplicável em todas as áreas. Hoje, é inevitável"',
-    data: 7,
-    autor: "Tadeu Schulz",
-    notice: `O futebol existe a mais de um século, foi responsável por criar 
-    grandes estrelas, grandes histórias e fazer que nós, torcedores, sofram
-    com grandes emoções. Essa história, com toda certeza, vai continuar por
-    vários anos, mas hoje, essa história ganha mais um capítulo, clones. <br>
-     Depois de um investimento coletivo de grandes clubes ao redor do mundo,
-    Um grupo de cientistas conseguiram criar o primeiro grupos de jogadores clones
-    do mundo, grupo esse composto por Benzema, Cristiano Ronaldo, Douglas Costa, 
-    Toni Kroos e Pickford. Os clones foram treinados e conseguiram resultados semelhantes
-    aos jogadores reais. <br>
-    Esse investimento foi feito com a intenção de serem realizados mais jogos de futebol por ano,
-    onde será possíviel realizar uma Olimpíado sem atrapalhar os campeonatos nacionais e internacionais,
-    dando oportunidade do público assistirem mais jogos. Vale ressaltar que os clones somente serão usado
-    nesse esporte. <br>
-    Mas a pergunta que fica é, ver o seu time do coração, composto por um elenco
-    100% de por clones, jogar é tão emocionante quanto ver jogadores reais? `    
-},{
-    imagem: "https://mercadodofutebol.com/wp-content/uploads/2021/06/60d952e479da2.jpg",
-    titulo: 'Kevin De Bruyne chega ao Real Madrid!',
-    subtitle: '"O homem chegou, a lenda" - Pedro Henrique, técnico do Real Madrid',
-    data: {
-        dia: 13,
-        mes: 10,
-        ano: 2021
-    },
-    autor: 'Julio Casablanca',
-    notice: `Em entrevista, perguntei ao técnico Pedro Henrique: "Será que ele merece a camisa 9 do Coutinho, que era do Douglas Costas, que marcou a história do clube Real Madrid como camisa nove lendário?" <br>
-Sua resposta foi:" Não sabemos se vamos alcançará o mesmo nível técnico medindo com os resultados anteriores, mas tentarei construir uma base no time quase uma família, e recriar um monstro no meio campo central e assim buscaremos o campeonato e o El clássico."`
+    Espero que gostem!`,
 }
-]
 
 var jornalist = [{
     foto: "",
