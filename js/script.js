@@ -7,7 +7,6 @@ Modal = {
     }
 }
 
-
 var newsDiv = document.getElementById("news")
 var jornalistDiv = document.getElementById("jornalist")
 var titleForNews = document.getElementById("title")
@@ -21,7 +20,7 @@ var news = [{
         mes: 10,
         ano: 2021
     },
-    autor: "Julio Casablanca",
+    autor: "Júlio Casablanca",
     notice: `Agora, o Jornal EoFut finalmente está de cara nova!
     Agora com um novo site, novo logo e várias outras novidades, o time
     EoFut esrá mais motivado nunca para trazer novidades para vocês!
@@ -67,7 +66,7 @@ var news = [{
         mes: 10,
         ano: 2021
     },
-    autor: 'Julio Casablanca',
+    autor: 'Júlio Casablanca',
     notice: `Em entrevista, perguntei ao técnico Pedro Henrique: "Será que ele merece a camisa 9 do Coutinho, que era do Douglas Costas, que marcou a história do clube Real Madrid como camisa nove lendário?" <br>
 Sua resposta foi:"Não sabemos se alcançará o mesmo nível técnico, mas vamos construir mas uma mostro no meio campo e buscaremos o campeonato e o El clássico."`
 }
@@ -75,7 +74,7 @@ Sua resposta foi:"Não sabemos se alcançará o mesmo nível técnico, mas vamos
 
 var jornalist = [{
     foto: "",
-    nome: "Júlio Casablaca",
+    nome: "Júlio Casablanca",
     cargo: "Jornalisa Esportivo"
 },
 {
@@ -85,22 +84,22 @@ var jornalist = [{
 },
 ]
 
-var jl = document.querySelector(".line-jornalist")
+var tagsNews = []
 
-function notice(i){
+function notice(i, dataNews){
     newsDiv.innerHTML = `
-    <a href="index.html">&blacktriangleleft;</a>
+    <a href="index.html" target="_self">&blacktriangleleft;</a>
                     <div class="notice-title">
-                    <h1>${news[i].titulo}</h1>
+                    <h1>${dataNews[i].titulo}</h1>
                 </div>
                 <div class="notice-subtitle">
-                    <h2>${news[i].subtitle}</h2>
+                    <h2>${dataNews[i].subtitle}</h2>
                 </div>
                     <div class="notice-paragraph">
-                    <p>${news[i].notice}</p>
+                    <p>${dataNews[i].notice}</p>
                     </div>
                     <div class="notice-credits">
-                        <h3>${news[i].autor}, do Jornal EoFut</h3>
+                        <h3>${dataNews[i].autor}, do Jornal EoFut</h3>
                     </div>
     `
     
@@ -119,7 +118,7 @@ function load(){
     for(var i = 0; i < jornalist.length; i++){
         
         textj = `
-        <div class="jornalist-perfil">
+        <div class="jornalist-perfil" onclick="jornalistNews(${i})">
             <div class="jornalist-photo"></div>
             <div class="jornalist-data">
             <div class="jornalist-name"><a href="#">${jornalist[i].nome}</a></div>
@@ -131,7 +130,8 @@ function load(){
         let jl = parseInt(i/3)
         document.querySelectorAll(".line-jornalist")[jl].innerHTML += textj
     }
-    
+   
+
     var numberLineNews = parseInt(news.length/3)
         
     for(var n = 0; n <= numberLineNews; n++){
@@ -144,7 +144,7 @@ function load(){
         let timeDate = noticeDate(news[i].data.dia)
 
         textn =`
-            <div class="card-news" onclick="notice(${i},news)">
+            <div class="card-news" onclick="notice(${i})">
                 <div class="card-image">
                     <img src="${news[i].imagem}">
                 </div>
@@ -162,9 +162,53 @@ function load(){
     let nl = parseInt(i/3)
     document.querySelectorAll(".line-news")[nl].innerHTML += textn
     }
+    
 }
 
- var date = new Date
+function jornalistNews(number){
+    tagsNews = []
+    newsDiv.innerHTML = `<h2>Notíicas de: ${jornalist[number].nome}</h2>
+    <a href="index.html" target="_self">&blacktriangleleft;</a>`
+
+    let dataJornalistNotice = news.filter((notice)=>{
+        return notice.autor == jornalist[number].nome
+    })
+
+    for(var m = 0; m < dataJornalistNotice.length; m++){
+        tagsNews.push(dataJornalistNotice[m])
+    }
+
+    let jornalistTagLines = parseInt(dataJornalistNotice.length/3)
+
+    for(var i = 0; i <= jornalistTagLines; i++){
+        newsDiv.innerHTML += `<div class="line-news"></div>`
+    }
+
+    for(var n = 0; n < dataJornalistNotice.length; n++){
+        let timeDate = noticeDate(news[n].data.dia)
+
+        textn =`
+            <div class="card-news" onclick="notice(${n}, tagsNews)">
+                <div class="card-image">
+                    <img src="${dataJornalistNotice[n].imagem}">
+                </div>
+            <div class="card-data">
+                <div class="card-title">
+                        <h1>${dataJornalistNotice[n].titulo}</h1>
+                </div>
+                <div class="card-date">
+                    <span>${timeDate}</span>
+                </div>
+                </div>
+            </div>
+        `
+
+    let nl = parseInt(i/3)
+    document.querySelectorAll(".line-news")[nl].innerHTML += textn
+    }
+}
+
+var date = new Date
 var Today = date.getDate()
 var Mouth = date.getMonth() + 1
 var Year = date.getFullYear()
