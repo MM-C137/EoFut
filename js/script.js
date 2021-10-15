@@ -181,7 +181,7 @@ function load(){
 
 function jornalistNews(number){
     tagsNews = []
-    newsDiv.innerHTML = `<h2>Notíicas de: ${jornalist[number].nome}</h2>
+    newsDiv.innerHTML = `<h2>Notícas de: ${jornalist[number].nome}</h2>
     <a href="index.html" target="_self">&blacktriangleleft;</a>`
 
     let dataJornalistNotice = news.filter((notice)=>{
