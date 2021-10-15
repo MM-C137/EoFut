@@ -144,7 +144,7 @@ function load(){
         let timeDate = noticeDate(news[i].data.dia)
 
         textn =`
-            <div class="card-news" onclick="notice(${i})">
+            <div class="card-news" onclick="notice(${i}), news">
                 <div class="card-image">
                     <img src="${news[i].imagem}">
                 </div>
