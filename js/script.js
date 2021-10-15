@@ -70,6 +70,20 @@ var news = [{
     notice: `Em entrevista, perguntei ao técnico Pedro Henrique: "Será que ele merece a camisa 9 do Coutinho, que era do Douglas Costas, que marcou a história do clube Real Madrid como camisa nove lendário?" <br>
 Sua resposta foi:"Não sabemos se alcançará o mesmo nível técnico, mas vamos construir mas uma mostro no meio campo e buscaremos o campeonato e o El clássico."`
 }
+,{
+    imagem: "https://us.123rf.com/450wm/dizanna/dizanna1906/dizanna190600619/125622199-esteroides-palabra-nube-collage-fondo-del-concepto-de-salud.jpg?ver=6",
+    titulo: 'Reforço de Forma: são ou não esteroides?',
+    subtitle: '"Não usamos Reforço de Forma, mas não sou contra." - Maurício Miranda, treinador do Sugiro que Fuja ',
+    data: {
+        dia: 15,
+        mes: 10,
+        ano: 2021
+    },
+    autor: 'Tadeu Schulz',
+    notice: `O uso de substâncias químicas no mundo esportivo sempre foi motivo para polêmicas. Muitas dessas substâncias são proibidas e até podem fazer que atleta seja banido do esporte. Esteroides melhoram tanto as habilidades físicas, quanto psicológicas, fazendo que o competidor tenha uma vantagem injusta sobre seus adversários. <br>
+O Reforço de Forma é um conjunto de treinos e medicamentos que melhoram as habilidades de um jogador pelo determinado tempo. Então... Reforço de Forma é esteroides? <br>
+A resposta é Não, enquanto esteroides são feito a base de substancias ilegais, os medicamentos que são usados no Reforço de Forma são 100% naturais e orgânicos, selecionados de acordo com a sequência de treinos que são realizados naquele dia. `
+}
 ]
 
 var jornalist = [{
@@ -144,7 +158,7 @@ function load(){
         let timeDate = noticeDate(news[i].data.dia)
 
         textn =`
-            <div class="card-news" onclick="notice(${i}), news">
+            <div class="card-news" onclick="notice(${i}, news)">
                 <div class="card-image">
                     <img src="${news[i].imagem}">
                 </div>
