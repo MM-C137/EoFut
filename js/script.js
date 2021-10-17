@@ -1,9 +1,11 @@
 Modal = {
     open(){
         document.querySelector(".modal-overlay").classList.add("active")
+        document.querySelector("html").style.overflowY = 'hidden'
     },
     close(){
         document.querySelector(".modal-overlay").classList.remove("active")
+        document.querySelector("html").style.overflowY = 'scroll'
     }
 }
 
@@ -101,8 +103,18 @@ var jornalist = [{
 var tagsNews = []
 
 function notice(i, dataNews){
+    if(dataNews == news){
+        // backButton = 'index.html'
+        backButton = 'href="index.html" target="_self"'
+    }else{
+       
+        indexBackTag = jornalist.findIndex((jornalistIndex)=>{
+            return jornalistIndex.nome == dataNews[i].autor
+        })
+        backButton = `href="#" target="_self" onclick="jornalistNews(${indexBackTag})"`
+    }
     newsDiv.innerHTML = `
-    <a href="index.html" target="_self">&blacktriangleleft;</a>
+    <a ${backButton}>&blacktriangleleft;</a>
                     <div class="notice-title">
                     <h1>${dataNews[i].titulo}</h1>
                 </div>
@@ -155,7 +167,7 @@ function load(){
     news.reverse()
     for(var i = 0; i < news.length; i++){
 
-        let timeDate = noticeDate(news[i].data.dia)
+        let timeDate = noticeDate(news[i].data)
 
         textn =`
             <div class="card-news" onclick="notice(${i}, news)">
@@ -181,7 +193,7 @@ function load(){
 
 function jornalistNews(number){
     tagsNews = []
-    newsDiv.innerHTML = `<h2>Notícas de: ${jornalist[number].nome}</h2>
+    newsDiv.innerHTML = `<h2>Notícias de: ${jornalist[number].nome}</h2>
     <a href="index.html" target="_self">&blacktriangleleft;</a>`
 
     let dataJornalistNotice = news.filter((notice)=>{
@@ -199,7 +211,7 @@ function jornalistNews(number){
     }
 
     for(var n = 0; n < dataJornalistNotice.length; n++){
-        let timeDate = noticeDate(news[n].data.dia)
+        let timeDate = noticeDate(news[n].data)
 
         textn =`
             <div class="card-news" onclick="notice(${n}, tagsNews)">
@@ -227,25 +239,44 @@ var Today = date.getDate()
 var Mouth = date.getMonth() + 1
 var Year = date.getFullYear()
 
-function noticeDate(newsDate){
-    dfData =  Today - newsDate 
-    dfWeek = ''
+function noticeDate(datesOfNews){
+    let noticeDay = datesOfNews.dia
+    let noticeMouth = datesOfNews.mes
+    let noticeYear = datesOfNews.ano
+
+    dfData =  Today - noticeDay 
+    dfMouth = Mouth - noticeMouth
     timeDate = '' 
-    if(newsDate == Today){
+    if(noticeDay == Today && noticeMouth == Mouth && noticeYear == Year){
         timeDate = 'Hoje'
     }
-    else if(dfData < Today && dfData == 1){
+    else if(dfData < Today && dfData == 1 && noticeMouth == Mouth && noticeYear == Year){
         timeDate = "Ontem"
     }
-    else if(dfData < Today && 1 < dfData && dfData < 7){
+    else if(dfData < Today && 1 < dfData && dfData < 7 && noticeMouth == Mouth && noticeYear == Year){
         timeDate = `Há ${dfData} dias`
     }
-    else if(7 <=dfData < 30){
+    else if(7 <=dfData <= 31 && noticeMouth == Mouth && noticeMouth == Mouth && noticeYear == Year){
         dfWeek = parseInt(dfData/7)
         if(dfWeek == 1){
             timeDate = `Há ${dfWeek} semana`
         }else{
             timeDate = `Há ${dfWeek} semanas`
+        }
+    }else if(dfData > 1 && noticeMouth != Mouth && noticeYear == Year){
+        dfData = Today - dfData
+        dfWeek = parseInt(dfData/7)
+
+        if(dfWeek == 1){
+            timeDate = `Há ${dfWeek} semana`
+        }else{
+            timeDate = `Há ${dfWeek} semanas`
+        }
+    }else if(dfMouth > 0 && noticeMouth != Mouth && noticeYear == Year){
+        if(dfMouth == 1){
+            timeDate = `Há ${dfMouth} mês`
+        }else{
+            timeDate = `Há ${dfMouth} meses`
         }
     }
     return timeDate
