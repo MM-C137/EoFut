@@ -34,6 +34,8 @@
 
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
+
+    z-index: 500;
 }
 
 .header .logo{
@@ -85,11 +87,13 @@ main{
 
 #news{
     font-family: monospace;
-
-    /* margin: -1rem 0; */
 }
 
-#news a{
+#news #notice-content{
+    margin-top: -2.5rem;
+}
+
+#news #notice-content a{
     text-decoration: none;
     font-size: 3.5rem;
     font-weight: bold;
@@ -98,26 +102,26 @@ main{
 
     transition: color .3s;
 }
-#news a:hover{
+#news #notice-content a:hover{
     color: var(--red);
 }
 
-#news .notice-title h1{
+#news #notice-content .notice-title h1{
     font-size: 2.75rem;
     color: var(--red);
 }
 
-#news .notice-subtitle{
+#news #notice-content .notice-subtitle{
     color: var(--red);
 }
 
-#news .notice-credits h3{
+#news #notice-content .notice-credits h3{
     margin-top: .75rem;
     font-size: 1.5rem;
     color: black;
 }
 
-#news .notice-paragraph p{
+#news #notice-content .notice-paragraph p{
     color: black;
     margin-top: .75rem;
 
@@ -126,6 +130,34 @@ main{
     text-indent: 3ch;
 
     max-width: 75rem;
+}
+
+.card-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading{
+    position: absolute; 
+    height: 15.5rem;
+    width: 25.5rem;
+
+    background: linear-gradient(-45deg, #afafaf, #e9e8e8, #afafaf);
+	background-size: 400% 400%;
+	animation: gradient 1.5s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .card-news{
@@ -142,6 +174,8 @@ main{
 
     display: flex;
     flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
 }
 .card-news:hover{
     border: 1px solid black;
@@ -234,8 +268,6 @@ main{
     font-family: monospace;
     font-weight: bold;
     font-size: 1.2rem;
-
-    /* background-color:var(--loading-gray); */
 }
 .jornalist-name a{
     color: black;
@@ -315,7 +347,7 @@ footer{
     font-size: 1.05rem;
     padding: 1rem 1.5rem;
     background-color: white;
-    max-width: 70%;
+    max-width: 75%;
 }
 
 .modal h2{
@@ -353,6 +385,8 @@ footer{
         align-items: center;
 
         gap: .75rem;
+
+        margin-bottom: .75rem;
     }
     .line-jornalist{
         flex-direction: column;
