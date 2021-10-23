@@ -86,6 +86,18 @@ Sua resposta foi:"Não sabemos se alcançará o mesmo nível técnico, mas vamos
 O Reforço de Forma é um conjunto de treinos e medicamentos que melhoram as habilidades de um jogador pelo determinado tempo. Então... Reforço de Forma é esteroides? <br>
 A resposta é Não, enquanto esteroides são feito a base de substancias ilegais, os medicamentos que são usados no Reforço de Forma são 100% naturais e orgânicos, selecionados de acordo com a sequência de treinos que são realizados naquele dia. `
 }
+,{
+    imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxLKWBrLmko-78rn2y2MsLVM0WHb2FYR9Ig&usqp=CAU",
+    titulo: 'Mohamed Salah, a nova contratação do Real Madrid',
+    subtitle: '',
+    data: {
+        dia: 23,
+        mes: 10,
+        ano: 2021
+    },
+    autor: 'Julio Casablanca',
+    notice: 'Hoje pela manha, o treinador Henrique, divulgou a contratação do ex-Liverpool e ex-Juventus nessa atual janela de transferência, com bastante esforço da área financeira pra arrecadar dinheiro suficiente para a contratação do novo camisa 11 do Real Madrid,o egípcio Mohamed Salah.'
+}
 ]
 
 var jornalist = [{
@@ -104,7 +116,6 @@ var tagsNews = []
 
 function notice(i, dataNews){
     if(dataNews == news){
-        // backButton = 'index.html'
         backButton = 'href="index.html" target="_self"'
     }else{
        
@@ -114,6 +125,7 @@ function notice(i, dataNews){
         backButton = `href="#" target="_self" onclick="jornalistNews(${indexBackTag})"`
     }
     newsDiv.innerHTML = `
+    <div id="notice-content">
     <a ${backButton}>&blacktriangleleft;</a>
                     <div class="notice-title">
                     <h1>${dataNews[i].titulo}</h1>
@@ -126,6 +138,7 @@ function notice(i, dataNews){
                     </div>
                     <div class="notice-credits">
                         <h3>${dataNews[i].autor}, do Jornal EoFut</h3>
+                    </div>
                     </div>
     `
     
@@ -148,7 +161,7 @@ function load(){
             <div class="jornalist-photo"></div>
             <div class="jornalist-data">
             <div class="jornalist-name"><a href="#">${jornalist[i].nome}</a></div>
-            <div class="jornalist-function"><a href="#">${jornalist[i].cargo}</a></div>
+            <div class="jornalist-function "><a href="#">${jornalist[i].cargo}</a></div>
             </div>
         </div>  
         `
@@ -170,6 +183,7 @@ function load(){
         let timeDate = noticeDate(news[i].data)
 
         textn =`
+        <div class="card-content">
             <div class="card-news" onclick="notice(${i}, news)">
                 <div class="card-image">
                     <img src="${news[i].imagem}">
@@ -182,7 +196,9 @@ function load(){
                     <span>${timeDate}</span>
                 </div>
                 </div>
-            </div>
+                
+        </div> 
+        <div class="loading"></div></div> 
         `
 
     let nl = parseInt(i/3)
@@ -220,7 +236,7 @@ function jornalistNews(number){
                 </div>
             <div class="card-data">
                 <div class="card-title">
-                        <h1>${dataJornalistNotice[n].titulo}</h1>
+                        <h1 class="">${dataJornalistNotice[n].titulo}</h1>
                 </div>
                 <div class="card-date">
                     <span>${timeDate}</span>
@@ -281,3 +297,13 @@ function noticeDate(datesOfNews){
     }
     return timeDate
 }
+
+
+
+
+setTimeout(()=>{
+    let loadingClass = document.querySelectorAll(".loading")
+    loadingClass.forEach(el=> el.remove())
+}, 1000)
+    
+   
