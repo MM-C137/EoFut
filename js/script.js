@@ -88,7 +88,7 @@ A resposta é Não, enquanto esteroides são feito a base de substancias ilegais
 }
 ,{
     imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxLKWBrLmko-78rn2y2MsLVM0WHb2FYR9Ig&usqp=CAU",
-    titulo: 'Salah, a nova contratação do Real Madrid',
+    titulo: 'Real Madrir anuncia Mohamed Salah',
     subtitle: '',
     data: {
         dia: 23,
