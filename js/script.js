@@ -32,6 +32,7 @@ var news = [{
     jornada, sem você não seriamos nada	.
     
     Espero que gostem!`,
+    tags: ["Tecnologia"]  
 }
 ,{
     imagem: "https://st2.depositphotos.com/1579454/12350/i/950/depositphotos_123503422-stock-photo-3d-illustration-of-chromosomes.jpg",
@@ -57,7 +58,8 @@ var news = [{
     dando oportunidade do público assistirem mais jogos. Vale ressaltar que os clones somente serão usado
     nesse esporte. <br>
     Mas a pergunta que fica é, ver o seu time do coração, composto por um elenco
-    100% de por clones, jogar é tão emocionante quanto ver jogadores reais? `    
+    100% de por clones, jogar é tão emocionante quanto ver jogadores reais? `,
+    tags: ["Tecnologia"]    
 }
 ,{
     imagem: "https://mercadodofutebol.com/wp-content/uploads/2021/06/60d952e479da2.jpg",
@@ -70,7 +72,8 @@ var news = [{
     },
     autor: 'Júlio Casablanca',
     notice: `Em entrevista, perguntei ao técnico Pedro Henrique: "Será que ele merece a camisa 9 do Coutinho, que era do Douglas Costas, que marcou a história do clube Real Madrid como camisa nove lendário?" <br>
-Sua resposta foi:"Não sabemos se alcançará o mesmo nível técnico, mas vamos construir mas uma mostro no meio campo e buscaremos o campeonato e o El clássico."`
+Sua resposta foi:"Não sabemos se alcançará o mesmo nível técnico, mas vamos construir mas uma mostro no meio campo e buscaremos o campeonato e o El clássico."`,
+    tags: ["Real Madrid"]
 }
 ,{
     imagem: "https://us.123rf.com/450wm/dizanna/dizanna1906/dizanna190600619/125622199-esteroides-palabra-nube-collage-fondo-del-concepto-de-salud.jpg?ver=6",
@@ -84,7 +87,8 @@ Sua resposta foi:"Não sabemos se alcançará o mesmo nível técnico, mas vamos
     autor: 'Tadeu Schulz',
     notice: `O uso de substâncias químicas no mundo esportivo sempre foi motivo para polêmicas. Muitas dessas substâncias são proibidas e até podem fazer que atleta seja banido do esporte. Esteroides melhoram tanto as habilidades físicas, quanto psicológicas, fazendo que o competidor tenha uma vantagem injusta sobre seus adversários. <br>
 O Reforço de Forma é um conjunto de treinos e medicamentos que melhoram as habilidades de um jogador pelo determinado tempo. Então... Reforço de Forma é esteroides? <br>
-A resposta é Não, enquanto esteroides são feito a base de substancias ilegais, os medicamentos que são usados no Reforço de Forma são 100% naturais e orgânicos, selecionados de acordo com a sequência de treinos que são realizados naquele dia. `
+A resposta é Não, enquanto esteroides são feito a base de substancias ilegais, os medicamentos que são usados no Reforço de Forma são 100% naturais e orgânicos, selecionados de acordo com a sequência de treinos que são realizados naquele dia. `,
+    tags: ["Tecnologia"]  
 }
 ,{
     imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxLKWBrLmko-78rn2y2MsLVM0WHb2FYR9Ig&usqp=CAU",
@@ -96,7 +100,8 @@ A resposta é Não, enquanto esteroides são feito a base de substancias ilegais
         ano: 2021
     },
     autor: 'Júlio Casablanca',
-    notice: 'Hoje pela manha, o treinador Henrique, divulgou a contratação do ex-Liverpool e ex-Juventus nessa atual janela de transferência, com bastante esforço da área financeira pra arrecadar dinheiro suficiente para a contratação do novo camisa 11 do Real Madrid,o egípcio Mohamed Salah.'
+    notice: 'Hoje pela manha, o treinador Henrique, divulgou a contratação do ex-Liverpool e ex-Juventus nessa atual janela de transferência, com bastante esforço da área financeira pra arrecadar dinheiro suficiente para a contratação do novo camisa 11 do Real Madrid,o egípcio Mohamed Salah.',
+    tags: ["Real Madrid"]
 }
 ]
 
@@ -116,32 +121,34 @@ var tagsNews = []
 
 function notice(i, dataNews){
     if(dataNews == news){
-        backButton = 'href="index.html" target="_self"'
+        backButton = 'href="index.html" target="_self" class="backButton"'
     }else{
        
         indexBackTag = jornalist.findIndex((jornalistIndex)=>{
             return jornalistIndex.nome == dataNews[i].autor
         })
-        backButton = `href="#" target="_self" onclick="jornalistNews(${indexBackTag})"`
+        backButton = `href="#" target="_self" class="backButton" onclick="jornalistNews(${indexBackTag})"`
     }
     newsDiv.innerHTML = `
     <div id="notice-content">
-    <a ${backButton}>&blacktriangleleft;</a>
-                    <div class="notice-title">
-                    <h1>${dataNews[i].titulo}</h1>
-                </div>
-                <div class="notice-subtitle">
-                    <h2>${dataNews[i].subtitle}</h2>
-                </div>
-                    <div class="notice-paragraph">
-                    <p>${dataNews[i].notice}</p>
-                    </div>
-                    <div class="notice-credits">
-                        <h3>${dataNews[i].autor}, do Jornal EoFut</h3>
-                    </div>
-                    </div>
+        <a ${backButton}>&blacktriangleleft;</a>
+        <div class="notice-title">
+            <h1>${dataNews[i].titulo}</h1>
+        </div>
+        <div class="notice-subtitle">
+            <h2>${dataNews[i].subtitle}</h2>
+        </div>
+        <div class="notice-paragraph">
+            <p>${dataNews[i].notice}</p>
+        </div>
+         <div class="notice-credits">
+             <h3>${dataNews[i].autor}, do Jornal EoFut</h3>
+        </div>
+        <div class="notice-tags">
+            <h3>Tags: <a href="#"> ${dataNews[i].tags}</a></h3>
+        </div>
+    </div>
     `
-    
 }
 
 function load(){
@@ -158,10 +165,18 @@ function load(){
         
         textj = `
         <div class="jornalist-perfil" onclick="jornalistNews(${i})">
-            <div class="jornalist-photo"></div>
+            <div class="jornalist-photo">
+                <div class="loading"></div>
+            </div>
             <div class="jornalist-data">
-            <div class="jornalist-name"><a href="#">${jornalist[i].nome}</a></div>
-            <div class="jornalist-function "><a href="#">${jornalist[i].cargo}</a></div>
+            <div class="jornalist-name">
+                <a href="#">${jornalist[i].nome}</a>
+                <div class="loading"></div>
+            </div>
+            <div class="jornalist-function ">
+                <a href="#">${jornalist[i].cargo}</a>
+                <div class="loading"></div>
+            </div>
             </div>
         </div>  
         `
@@ -210,7 +225,7 @@ function load(){
 function jornalistNews(number){
     tagsNews = []
     newsDiv.innerHTML = `<h2>Notícias de: ${jornalist[number].nome}</h2>
-    <a href="index.html" target="_self">&blacktriangleleft;</a>`
+    <a href="index.html" target="_self" class="backButton">&blacktriangleleft;</a>`
 
     let dataJornalistNotice = news.filter((notice)=>{
         return notice.autor == jornalist[number].nome
