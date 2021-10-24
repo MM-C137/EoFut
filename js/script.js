@@ -95,7 +95,7 @@ A resposta é Não, enquanto esteroides são feito a base de substancias ilegais
         mes: 10,
         ano: 2021
     },
-    autor: 'Julio Casablanca',
+    autor: 'Júlio Casablanca',
     notice: 'Hoje pela manha, o treinador Henrique, divulgou a contratação do ex-Liverpool e ex-Juventus nessa atual janela de transferência, com bastante esforço da área financeira pra arrecadar dinheiro suficiente para a contratação do novo camisa 11 do Real Madrid,o egípcio Mohamed Salah.'
 }
 ]
