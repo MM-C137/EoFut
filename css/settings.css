@@ -119,19 +119,6 @@ main{
 .backButton:hover{
     color: var(--red);
 }
-/* 
-#news #notice-content a{
-    text-decoration: none;
-    font-size: 3.5rem;
-    font-weight: bold;
-    color: black;
-    outline: none;
-
-    transition: color .3s;
-}
-#news #notice-content a:hover{
-    color: var(--red);
-} */
 
 #news #notice-content .notice-title h1{
     font-size: 2.75rem;
@@ -333,7 +320,7 @@ main{
 }
 .jornalist-function .loading{
     height: 1rem;
-    width: 10.5rem;
+    width: 11rem;
 
     border-radius: .25rem;
 }
